@@ -1,77 +1,72 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(new MyApp());
-}
+void main() => runApp(TabbedAppBarSample());
 
-class MyApp extends StatelessWidget {
+class TabbedAppBarSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'TEST',
-      theme: new ThemeData.dark(),
-      home: new MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-}
-
-// TickerProviderが必要なので、SingleTickerProviderStateMixinを追加
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  // 表示するタブのリストを作成
-  final List<Tab> tabs = <Tab>[
-    Tab(text: 'tab1'),
-    Tab(text: 'tab2'),
-    Tab(text: 'tab3'),
-  ];
-
-  // TtabControllerはTabBarのインデックスを管理
-  TabController _tabController;
-
-  // TStatefulWidgetを使うので、initStateにTabControllerのインスタンスを生成
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(vsync: this, length: tabs.length);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // TabBarはAppBarのBottomで使用
-      appBar: AppBar(
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: tabs,
+    return MaterialApp(
+      home: DefaultTabController(
+        length: choices.length,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Tabbed AppBar'),
+            bottom: TabBar(
+              tabs: choices.map((Choice choice) {
+                return Tab(
+                  text: choice.title,
+                  icon: Icon(choice.icon),
+                );
+              }).toList(),
+            ),
+          ),
+          body: TabBarView(
+            children: choices.map((Choice choice) {
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ChoiceCard(choice: choice),
+              );
+            }).toList(),
+          ),
         ),
       ),
-
-      // TabBarViewのWidgetはTabBarと同じくChildren　Widgetが必要
-      // mapメソッドでTabで作成したコンテンツのウィジェットを作成し、それをリストで取り出してChildren　Widgetに設定
-      body: TabBarView(
-        controller: _tabController,
-        children: tabs.map((Tab tab) {
-          return createTab(tab);
-        }).toList(),
-      ),
     );
   }
+}
 
-  Widget createTab(Tab tab) {
-    return Center(
-        child: Text(
-      tab.text + 'page',
-      style: const TextStyle(
-        fontSize: 32.0,
-        color: Colors.blue,
+class Choice {
+  const Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'CAR', icon: Icons.directions_car),
+  const Choice(title: 'BICYCLE', icon: Icons.directions_bike),
+  const Choice(title: 'BOAT', icon: Icons.directions_boat),
+];
+
+class ChoiceCard extends StatelessWidget {
+  const ChoiceCard({Key key, this.choice}) : super(key: key);
+
+  final Choice choice;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return Card(
+      color: Colors.white,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(choice.icon, size: 128.0, color: textStyle.color),
+            Text(choice.title, style: textStyle),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
