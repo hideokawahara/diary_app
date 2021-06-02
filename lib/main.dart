@@ -64,7 +64,11 @@ class ChoiceCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Icon(choice.icon, size: 128.0, color: textStyle.color),
+            CircleAvatar(
+              child: Icon(choice.icon, size: 30.0, color: textStyle.color),
+              backgroundColor: Colors.orangeAccent,
+              radius: 30.0,
+            ),
             Text(choice.title + 'あ', style: textStyle),
             Image(
               image: AssetImage('images/rails.png'),
