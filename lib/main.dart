@@ -9,8 +9,10 @@ class TabbedAppBarSample extends StatelessWidget {
       home: DefaultTabController(
         length: choices.length,
         child: Scaffold(
+          backgroundColor: Colors.white70,
           appBar: AppBar(
             title: const Text('Tabbed AppBar'),
+            backgroundColor: Colors.teal[900],
             bottom: TabBar(
               tabs: choices.map((Choice choice) {
                 return Tab(
@@ -63,7 +65,10 @@ class ChoiceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Icon(choice.icon, size: 128.0, color: textStyle.color),
-            Text(choice.title, style: textStyle),
+            Text(choice.title + 'あ', style: textStyle),
+            Image(
+              image: AssetImage('images/rails.png'),
+            )
           ],
         ),
       ),
