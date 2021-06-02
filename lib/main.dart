@@ -30,6 +30,10 @@ class TabbedAppBarSample extends StatelessWidget {
               );
             }).toList(),
           ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.teal[900],
+            child: Icon(Icons.add),
+          ),
         ),
       ),
     );
@@ -69,9 +73,22 @@ class ChoiceCard extends StatelessWidget {
               backgroundColor: Colors.orangeAccent,
               radius: 30.0,
             ),
+            SizedBox(
+              height: 10.0,
+            ),
             Text(choice.title + 'あ', style: textStyle),
             Image(
               image: AssetImage('images/rails.png'),
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                    )),
+              ),
             )
           ],
         ),
