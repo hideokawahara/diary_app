@@ -1,3 +1,4 @@
+import 'package:diary_app/widgets/tasks_list.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(TabbedAppBarSample());
@@ -82,12 +83,16 @@ class ChoiceCard extends StatelessWidget {
             ),
             Expanded(
               child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                ),
                 decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     )),
+                child: TasksList(),
               ),
             )
           ],
