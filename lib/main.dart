@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 void main() => runApp(TabbedAppBarSample());
 
 class TabbedAppBarSample extends StatelessWidget {
+  Widget buildBottomSheet(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('test'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,9 +39,15 @@ class TabbedAppBarSample extends StatelessWidget {
               );
             }).toList(),
           ),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.teal[900],
-            child: Icon(Icons.add),
+          floatingActionButton: Builder(
+            builder: (context) => FloatingActionButton(
+              backgroundColor: Colors.teal[900],
+              child: Icon(Icons.add),
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context, builder: buildBottomSheet);
+              },
+            ),
           ),
         ),
       ),
