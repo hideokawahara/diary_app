@@ -1,5 +1,6 @@
 import 'package:diary_app/widgets/tasks_list.dart';
 import 'package:flutter/material.dart';
+import 'package:diary_app/screens/add_task_screen.dart';
 
 void main() => runApp(TabbedAppBarSample());
 
@@ -45,7 +46,10 @@ class TabbedAppBarSample extends StatelessWidget {
               child: Icon(Icons.add),
               onPressed: () {
                 showModalBottomSheet(
-                    context: context, builder: buildBottomSheet);
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (context) => AddTaskScreen(),
+                );
               },
             ),
           ),
