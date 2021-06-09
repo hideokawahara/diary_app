@@ -2,9 +2,16 @@ import 'package:diary_app/widgets/tasks_list.dart';
 import 'package:flutter/material.dart';
 import 'package:diary_app/screens/add_task_screen.dart';
 
+import 'models/task.dart';
+
 void main() => runApp(TabbedAppBarSample());
 
-class TabbedAppBarSample extends StatelessWidget {
+class TabbedAppBarSample extends StatefulWidget {
+  @override
+  _TabbedAppBarSampleState createState() => _TabbedAppBarSampleState();
+}
+
+class _TabbedAppBarSampleState extends State<TabbedAppBarSample> {
   Widget buildBottomSheet(BuildContext context) {
     return Container(
       child: Center(
@@ -12,6 +19,12 @@ class TabbedAppBarSample extends StatelessWidget {
       ),
     );
   }
+
+  List<Task> tasks = [
+    Task(name: 'buy toy'),
+    Task(name: 'buuy buuy'),
+    Task(name: 'buuuuuu'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +49,10 @@ class TabbedAppBarSample extends StatelessWidget {
             children: choices.map((Choice choice) {
               return Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ChoiceCard(choice: choice),
+                child: ChoiceCard(
+                  choice: choice,
+                  tasks: tasks,
+                ),
               );
             }).toList(),
           ),
@@ -48,7 +64,14 @@ class TabbedAppBarSample extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   isScrollControlled: true,
-                  builder: (context) => AddTaskScreen(),
+                  builder: (context) => AddTaskScreen(
+                    (newTaskTitle) {
+                      setState(() {
+                        tasks.add(Task(name: newTaskTitle));
+                      });
+                      Navigator.pop(context);
+                    },
+                  ),
                 );
               },
             ),
@@ -72,11 +95,17 @@ const List<Choice> choices = const <Choice>[
   const Choice(title: 'BOAT', icon: Icons.directions_boat),
 ];
 
-class ChoiceCard extends StatelessWidget {
-  const ChoiceCard({Key key, this.choice}) : super(key: key);
-
+class ChoiceCard extends StatefulWidget {
   final Choice choice;
+  final List<Task> tasks;
 
+  ChoiceCard({this.choice, this.tasks});
+
+  @override
+  _ChoiceCardState createState() => _ChoiceCardState();
+}
+
+class _ChoiceCardState extends State<ChoiceCard> {
   @override
   Widget build(BuildContext context) {
     final TextStyle textStyle = Theme.of(context).textTheme.display1;
@@ -88,14 +117,15 @@ class ChoiceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             CircleAvatar(
-              child: Icon(choice.icon, size: 30.0, color: textStyle.color),
+              child:
+                  Icon(widget.choice.icon, size: 30.0, color: textStyle.color),
               backgroundColor: Colors.orangeAccent,
               radius: 30.0,
             ),
             SizedBox(
               height: 10.0,
             ),
-            Text(choice.title + 'あ', style: textStyle),
+            Text(widget.choice.title + 'あ', style: textStyle),
             Image(
               image: AssetImage('images/rails.png'),
             ),
@@ -110,7 +140,7 @@ class ChoiceCard extends StatelessWidget {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     )),
-                child: TasksList(),
+                child: TasksList(widget.tasks),
               ),
             )
           ],
