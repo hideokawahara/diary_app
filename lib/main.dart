@@ -1,6 +1,8 @@
+import 'package:diary_app/models/task_date.dart';
 import 'package:diary_app/widgets/tasks_list.dart';
 import 'package:flutter/material.dart';
 import 'package:diary_app/screens/add_task_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'models/task.dart';
 
@@ -20,60 +22,72 @@ class _TabbedAppBarSampleState extends State<TabbedAppBarSample> {
     );
   }
 
-  List<Task> tasks = [
-    Task(name: 'buy toy'),
-    Task(name: 'buuy buuy'),
-    Task(name: 'buuuuuu'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: choices.length,
-        child: Scaffold(
-          backgroundColor: Colors.white70,
-          appBar: AppBar(
-            title: const Text('Tabbed AppBar'),
-            backgroundColor: Colors.teal[900],
-            bottom: TabBar(
-              tabs: choices.map((Choice choice) {
-                return Tab(
-                  text: choice.title,
-                  icon: Icon(choice.icon),
-                );
-              }).toList(),
-            ),
-          ),
-          body: TabBarView(
-            children: choices.map((Choice choice) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ChoiceCard(
-                  choice: choice,
-                  tasks: tasks,
-                ),
-              );
-            }).toList(),
-          ),
-          floatingActionButton: Builder(
-            builder: (context) => FloatingActionButton(
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => TaskData(),
+      child: MaterialApp(
+        home: DefaultTabController(
+          length: choices.length,
+          child: Scaffold(
+            backgroundColor: Colors.white70,
+            appBar: AppBar(
+              title: const Text('Tabbed AppBar'),
               backgroundColor: Colors.teal[900],
-              child: Icon(Icons.add),
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (context) => AddTaskScreen(
-                    (newTaskTitle) {
-                      setState(() {
-                        tasks.add(Task(name: newTaskTitle));
-                      });
-                      Navigator.pop(context);
-                    },
-                  ),
+              bottom: TabBar(
+                tabs: choices.map((Choice choice) {
+                  return Tab(
+                    text: choice.title,
+                    icon: Icon(choice.icon),
+                  );
+                }).toList(),
+              ),
+            ),
+            body: Builder(
+              builder: (BuildContext context) {
+                return TabBarView(
+                  children: choices.map((Choice choice) {
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: ChoiceCard(
+                        choice: choice,
+                        tasks: Provider.of<TaskData>(context).tasks,
+                      ),
+                    );
+                  }).toList(),
                 );
               },
+              // child: TabBarView(
+              //   children: choices.map((Choice choice) {
+              //     return Padding(
+              //       padding: const EdgeInsets.all(16.0),
+              //       child: ChoiceCard(
+              //         choice: choice,
+              //         tasks: Provider.of<TaskData>(context).tasks,
+              //       ),
+              //     );
+              //   }).toList(),
+              // ),
+            ),
+            floatingActionButton: Builder(
+              builder: (context) => FloatingActionButton(
+                backgroundColor: Colors.teal[900],
+                child: Icon(Icons.add),
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) => AddTaskScreen(
+                      (newTaskTitle) {
+                        // setState(() {
+                        //   tasks.add(Task(name: newTaskTitle));
+                        // });
+                        Navigator.pop(context);
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -140,7 +154,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     )),
-                child: TasksList(widget.tasks),
+                child: TasksList(),
               ),
             )
           ],
