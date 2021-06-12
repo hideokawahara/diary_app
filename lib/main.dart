@@ -77,14 +77,7 @@ class _TabbedAppBarSampleState extends State<TabbedAppBarSample> {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    builder: (context) => AddTaskScreen(
-                      (newTaskTitle) {
-                        // setState(() {
-                        //   tasks.add(Task(name: newTaskTitle));
-                        // });
-                        Navigator.pop(context);
-                      },
-                    ),
+                    builder: (context) => AddTaskScreen(),
                   );
                 },
               ),
