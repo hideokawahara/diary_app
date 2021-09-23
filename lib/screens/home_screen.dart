@@ -1,5 +1,6 @@
 import 'package:diary_app/resource/app_colors.dart';
 import 'package:diary_app/widgets/search_box.dart';
+import 'package:diary_app/widgets/special_contents_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,10 +11,15 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: AppColors.teal,
         title: Text(
           'ホーム',
+          style: TextStyle(
+            color: AppColors.white,
+          ),
         ),
       ),
       backgroundColor: AppColors.white,
       body: HomeScreenBody(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SpecialContentsButton(),
     );
   }
 }
