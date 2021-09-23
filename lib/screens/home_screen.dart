@@ -1,6 +1,7 @@
 import 'package:diary_app/resource/app_colors.dart';
 import 'package:diary_app/widgets/search_box.dart';
 import 'package:diary_app/widgets/special_contents_button.dart';
+import 'package:diary_app/widgets/users_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,6 +26,21 @@ class HomeScreen extends StatelessWidget {
 }
 
 class HomeScreenBody extends StatelessWidget {
+  final List<String> users = [
+    'images/dummy/dummy_person1.jpeg',
+    'images/dummy/dummy_person2.jpeg',
+    'images/dummy/dummy_person3.jpeg',
+    'images/dummy/dummy_person1.jpeg',
+    'images/dummy/dummy_person2.jpeg',
+    'images/dummy/dummy_person3.jpeg',
+    'images/dummy/dummy_person1.jpeg',
+    'images/dummy/dummy_person2.jpeg',
+    'images/dummy/dummy_person3.jpeg',
+    'images/dummy/dummy_person1.jpeg',
+    'images/dummy/dummy_person2.jpeg',
+    'images/dummy/dummy_person3.jpeg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,6 +49,7 @@ class HomeScreenBody extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SearchBox(),
+            UsersGridView(users: users),
           ],
         ),
       ),
