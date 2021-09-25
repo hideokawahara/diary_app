@@ -49,6 +49,9 @@ class HomeScreenBody extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SearchBox(),
+            SizedBox(
+              height: 8.0,
+            ),
             UsersGridView(users: users),
           ],
         ),
