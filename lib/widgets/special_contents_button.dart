@@ -24,7 +24,7 @@ class SpecialContentsButton extends StatelessWidget {
             width: 8.0,
           ),
           Text(
-            '心理テスト',
+            'スペシャルコンテンツ',
             style: TextStyle(color: AppColors.white),
           ),
         ],
