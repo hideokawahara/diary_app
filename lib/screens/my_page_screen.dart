@@ -18,6 +18,76 @@ class MyPageScreen extends StatelessWidget {
 }
 
 class MyPageScreenBody extends StatelessWidget {
+  final Map<Widget, Widget> itemsList = {
+    Text(
+      '残いいね！',
+    ): Text(
+      '68',
+    ),
+    Text(
+      '会員ステータス',
+    ): Text(
+      '有料会員',
+    ),
+    Text(
+      '残ポイント',
+    ): Text(
+      '10',
+    )
+  };
+
+  final Map<Widget, Widget> itemsList2 = {
+    Icon(
+      Icons.thumb_up,
+    ): Text(
+      'いいね！履歴',
+    ),
+    Icon(
+      Icons.snowshoeing,
+    ): Text(
+      '足あと',
+    ),
+    Icon(
+      Icons.favorite_rounded,
+    ): Text(
+      'モテ度チェック',
+    ),
+  };
+
+  final Map<Widget, Widget> itemsList3 = {
+    Icon(
+      Icons.settings,
+    ): Text(
+      '各種設定',
+    ),
+    Icon(Icons.help): Text(
+      'ヘルプ',
+    ),
+    Icon(
+      Icons.star_outline,
+    ): Text(
+      'お気に入り',
+    ),
+  };
+
+  final Map<Widget, Widget> itemsList4 = {
+    Icon(
+      Icons.insert_drive_file_outlined,
+    ): Text(
+      '恋愛コラム',
+    ),
+    Icon(
+      Icons.format_indent_decrease,
+    ): Text(
+      'レポート',
+    ),
+    Icon(
+      Icons.notification_important_outlined,
+    ): Text(
+      'お知らせ',
+    ),
+  };
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,41 +102,18 @@ class MyPageScreenBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          '残いいね！',
+                  ...itemsList.entries.map(
+                    (item) {
+                      return Container(
+                        color: Colors.grey,
+                        child: Column(
+                          children: <Widget>[
+                            item.key,
+                            item.value,
+                          ],
                         ),
-                        Text(
-                          '68',
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          '会員ステータス',
-                        ),
-                        Text(
-                          '有料会員',
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          '残ポイント',
-                        ),
-                        Text(
-                          '10',
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -76,31 +123,18 @@ class MyPageScreenBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          Icons.thumb_up,
+                  ...itemsList2.entries.map(
+                    (item) {
+                      return Container(
+                        color: Colors.grey,
+                        child: Column(
+                          children: <Widget>[
+                            item.key,
+                            item.value,
+                          ],
                         ),
-                        Text('いいね！履歴'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(Icons.snowshoeing),
-                        Text('足あと'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(Icons.favorite_rounded),
-                        Text('モテ度チェック'),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -110,29 +144,18 @@ class MyPageScreenBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: [
-                        Icon(Icons.settings),
-                        Text('各種設定'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(Icons.help),
-                        Text('ヘルプ'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(Icons.star_outline),
-                        Text('お気に入り'),
-                      ],
-                    ),
+                  ...itemsList3.entries.map(
+                    (item) {
+                      return Container(
+                        color: Colors.grey,
+                        child: Column(
+                          children: <Widget>[
+                            item.key,
+                            item.value,
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -142,29 +165,18 @@ class MyPageScreenBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: [
-                        Icon(Icons.insert_drive_file_outlined),
-                        Text('恋愛コラム'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(Icons.format_indent_decrease),
-                        Text('レポート'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(Icons.notification_important_outlined),
-                        Text('お知らせ'),
-                      ],
-                    ),
+                  ...itemsList4.entries.map(
+                    (item) {
+                      return Container(
+                        color: Colors.grey,
+                        child: Column(
+                          children: <Widget>[
+                            item.key,
+                            item.value,
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
