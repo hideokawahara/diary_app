@@ -21,70 +21,132 @@ class MyPageScreenBody extends StatelessWidget {
   final Map<Widget, Widget> itemsList = {
     Text(
       '残いいね！',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ): Text(
       '68',
+      style: TextStyle(
+        fontSize: 24.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.black54,
+      ),
     ),
     Text(
       '会員ステータス',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ): Text(
       '有料会員',
+      style: TextStyle(
+        fontSize: 24.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.black54,
+      ),
     ),
     Text(
       '残ポイント',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ): Text(
       '10',
+      style: TextStyle(
+        fontSize: 24.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.black54,
+      ),
     )
   };
 
   final Map<Widget, Widget> itemsList2 = {
     Icon(
       Icons.thumb_up,
+      size: 40.0,
     ): Text(
       'いいね！履歴',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
     Icon(
       Icons.snowshoeing,
+      size: 40.0,
     ): Text(
       '足あと',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
     Icon(
       Icons.favorite_rounded,
+      size: 40.0,
     ): Text(
       'モテ度チェック',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
   };
 
   final Map<Widget, Widget> itemsList3 = {
     Icon(
       Icons.settings,
+      size: 40.0,
     ): Text(
       '各種設定',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
-    Icon(Icons.help): Text(
+    Icon(
+      Icons.help,
+      size: 40.0,
+    ): Text(
       'ヘルプ',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
     Icon(
       Icons.star_outline,
+      size: 40.0,
     ): Text(
       'お気に入り',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
   };
 
   final Map<Widget, Widget> itemsList4 = {
     Icon(
       Icons.insert_drive_file_outlined,
+      size: 40.0,
     ): Text(
       '恋愛コラム',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
     Icon(
       Icons.format_indent_decrease,
+      size: 40.0,
     ): Text(
       'レポート',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
     Icon(
       Icons.notification_important_outlined,
+      size: 40.0,
     ): Text(
       'お知らせ',
+      style: TextStyle(
+        color: Colors.grey,
+      ),
     ),
   };
 
@@ -96,6 +158,9 @@ class MyPageScreenBody extends StatelessWidget {
           height: 24.0,
         ),
         ProfileEditSection(),
+        SizedBox(
+          height: 32.0,
+        ),
         Container(
           child: Column(
             children: <Widget>[
@@ -105,10 +170,15 @@ class MyPageScreenBody extends StatelessWidget {
                   ...itemsList.entries.map(
                     (item) {
                       return Container(
-                        color: Colors.grey,
+                        height: 100.0,
+                        width: 100.0,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             item.key,
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             item.value,
                           ],
                         ),
@@ -126,10 +196,15 @@ class MyPageScreenBody extends StatelessWidget {
                   ...itemsList2.entries.map(
                     (item) {
                       return Container(
-                        color: Colors.grey,
+                        height: 100.0,
+                        width: 100.0,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             item.key,
+                            SizedBox(
+                              height: 16.0,
+                            ),
                             item.value,
                           ],
                         ),
@@ -147,10 +222,15 @@ class MyPageScreenBody extends StatelessWidget {
                   ...itemsList3.entries.map(
                     (item) {
                       return Container(
-                        color: Colors.grey,
+                        height: 100.0,
+                        width: 100.0,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             item.key,
+                            SizedBox(
+                              height: 16.0,
+                            ),
                             item.value,
                           ],
                         ),
@@ -168,10 +248,15 @@ class MyPageScreenBody extends StatelessWidget {
                   ...itemsList4.entries.map(
                     (item) {
                       return Container(
-                        color: Colors.grey,
+                        height: 100.0,
+                        width: 100.0,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             item.key,
+                            SizedBox(
+                              height: 16.0,
+                            ),
                             item.value,
                           ],
                         ),
