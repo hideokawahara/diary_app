@@ -4,6 +4,7 @@ import 'package:diary_app/screens/chat_screen.dart';
 import 'package:diary_app/screens/home_screen.dart';
 import 'package:diary_app/screens/like_screen.dart';
 import 'package:diary_app/screens/my_page_screen.dart';
+import 'package:diary_app/screens/my_profile_screen.dart';
 import 'package:diary_app/screens/special_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +68,10 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
     ),
   ];
 
+  final appRoutes = {
+    MyProfileScreen.routeName: (_) => MyProfileScreen(),
+  };
+
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
@@ -77,6 +82,7 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
       ),
       tabBuilder: (context, index) {
         return CupertinoTabView(
+          routes: appRoutes,
           builder: (context) {
             return _pageWidgets[index];
           },

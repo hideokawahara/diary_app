@@ -286,7 +286,9 @@ class ProfileEditSection extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/profile');
+          },
           child: Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(
