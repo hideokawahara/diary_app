@@ -83,6 +83,17 @@ class MyProfileScreenBody extends StatelessWidget {
                     ),
                   ],
                 ),
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('自己紹介'),
+                      Text(
+                        'はじめまして！よろしくお願いします！',
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
