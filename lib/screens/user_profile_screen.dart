@@ -1,8 +1,8 @@
 import 'package:diary_app/resource/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class MyProfileScreen extends StatelessWidget {
-  static const routeName = '/myProfile';
+class UserProfileScreen extends StatelessWidget {
+  static const routeName = '/userProfile';
 
   @override
   Widget build(BuildContext context) {
@@ -10,16 +10,16 @@ class MyProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.teal,
         title: Text(
-          'プロフィール',
+          'ユーザー用プロフィール',
         ),
       ),
       backgroundColor: AppColors.white,
-      body: MyProfileScreenBody(),
+      body: UserProfileScreenBody(),
     );
   }
 }
 
-class MyProfileScreenBody extends StatelessWidget {
+class UserProfileScreenBody extends StatelessWidget {
   final Map<String, String> userInfo = {
     'ニックネーム': 'でおでお',
     '年齢': '25歳',
@@ -57,15 +57,7 @@ class MyProfileScreenBody extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              // width: double.infinity,
-              decoration: BoxDecoration(
-                  // color: Colors.blueAccent,
-                  // image: DecorationImage(
-                  //     image: AssetImage(
-                  //       'images/dummy/dummy_person1.jpeg',
-                  //     ),
-                  //     fit: BoxFit.cover),
-                  ),
+              decoration: BoxDecoration(),
               child: CircleAvatar(
                 radius: 110.0,
                 backgroundImage: AssetImage(

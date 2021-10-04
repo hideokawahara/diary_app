@@ -6,6 +6,7 @@ import 'package:diary_app/screens/like_screen.dart';
 import 'package:diary_app/screens/my_page_screen.dart';
 import 'package:diary_app/screens/my_profile_screen.dart';
 import 'package:diary_app/screens/special_screen.dart';
+import 'package:diary_app/screens/user_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +71,7 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
 
   final appRoutes = {
     MyProfileScreen.routeName: (_) => MyProfileScreen(),
+    UserProfileScreen.routeName: (_) => UserProfileScreen(),
   };
 
   @override
