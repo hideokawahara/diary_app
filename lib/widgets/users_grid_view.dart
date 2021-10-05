@@ -1,9 +1,10 @@
+import 'package:diary_app/models/user.dart';
 import 'package:flutter/material.dart';
 
 class UsersGridView extends StatelessWidget {
   UsersGridView({@required this.users});
 
-  final List<String> users;
+  final List<User> users;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,11 @@ class UsersGridView extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/userProfile');
+              Navigator.pushNamed(
+                context,
+                '/userProfile',
+                arguments: users[index],
+              );
             },
             child: Container(
               margin: const EdgeInsets.all(8.0),
@@ -27,7 +32,7 @@ class UsersGridView extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Image.asset(
-                  users[index],
+                  users[index].path,
                   fit: BoxFit.cover,
                 ),
               ),

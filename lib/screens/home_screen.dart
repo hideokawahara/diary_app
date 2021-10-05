@@ -1,3 +1,4 @@
+import 'package:diary_app/models/user.dart';
 import 'package:diary_app/resource/app_colors.dart';
 import 'package:diary_app/widgets/search_box.dart';
 import 'package:diary_app/widgets/special_contents_button.dart';
@@ -26,21 +27,44 @@ class HomeScreen extends StatelessWidget {
 }
 
 class HomeScreenBody extends StatelessWidget {
-  final List<String> users = [
-    'images/dummy/dummy_person1.jpeg',
-    'images/dummy/dummy_person2.jpeg',
-    'images/dummy/dummy_person3.jpeg',
-    'images/dummy/dummy_person1.jpeg',
-    'images/dummy/dummy_person2.jpeg',
-    'images/dummy/dummy_person3.jpeg',
-    'images/dummy/dummy_person1.jpeg',
-    'images/dummy/dummy_person2.jpeg',
-    'images/dummy/dummy_person3.jpeg',
-    'images/dummy/dummy_person1.jpeg',
-    'images/dummy/dummy_person2.jpeg',
-    'images/dummy/dummy_person3.jpeg',
+  final List<User> userList = [
+    User(
+      name: 'たなか',
+      path: 'images/dummy/dummy_person1.jpeg',
+    ),
+    User(
+      name: 'すずき',
+      path: 'images/dummy/dummy_person2.jpeg',
+    ),
+    User(
+      name: '佐藤',
+      path: 'images/dummy/dummy_person3.jpeg',
+    ),
+    User(
+      name: 'やまもと',
+      path: 'images/dummy/dummy_person1.jpeg',
+    ),
+    User(
+      name: 'たかはし',
+      path: 'images/dummy/dummy_person2.jpeg',
+    ),
+    User(
+      name: 'かわ',
+      path: 'images/dummy/dummy_person3.jpeg',
+    ),
+    User(
+      name: 'たなか',
+      path: 'images/dummy/dummy_person1.jpeg',
+    ),
+    User(
+      name: 'すずき',
+      path: 'images/dummy/dummy_person2.jpeg',
+    ),
+    User(
+      name: 'おおもり',
+      path: 'images/dummy/dummy_person3.jpeg',
+    ),
   ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,7 +81,7 @@ class HomeScreenBody extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
-            UsersGridView(users: users),
+            UsersGridView(users: userList),
           ],
         ),
       ),

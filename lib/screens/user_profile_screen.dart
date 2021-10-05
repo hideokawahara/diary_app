@@ -1,3 +1,4 @@
+import 'package:diary_app/models/user.dart';
 import 'package:diary_app/resource/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -51,6 +52,8 @@ class UserProfileScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = ModalRoute.of(context).settings.arguments;
+    print(user);
     return Container(
       width: double.infinity,
       child: SingleChildScrollView(
@@ -61,7 +64,7 @@ class UserProfileScreenBody extends StatelessWidget {
               child: CircleAvatar(
                 radius: 110.0,
                 backgroundImage: AssetImage(
-                  'images/dummy/myPage_icon.jpg',
+                  user.path,
                 ),
               ),
             ),
@@ -78,7 +81,7 @@ class UserProfileScreenBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'でおでお 25歳 大阪',
+                    '${user.name} 25歳 大阪',
                   ),
                   Row(
                     children: <Widget>[
